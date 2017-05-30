@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+			<!-- 带有多个logger的配置，指定级别，指定appender
+				 当执行logback.LogbackDemo类的main方法时，先执行<logger name="logback.LogbackDemo" level="INFO" sdditivity="false">,将级别为：“INFO”即大于“INFO”的日志信息交给此logger指定的名为：“STDOUT”的appender来处理，在控制台中打出日志，
+				 不在向logger的日志向上级<logger name="logback">传递打印信息
+				 <logger name="logback"/>未接到任何打印信息，当然不会给它的上级传递打印信息
+				 
+				 <logger name="logback.LogbackDemo" level="INFO" additivity="true">，那么，就会打印两次-->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+	<appender name="STDOUT" class="ch.qos.logback.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender >
+</configuration> 

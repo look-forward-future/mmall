@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+			<!-- RollingAppender:滚动记录文件，先将日志记录到指定的文件，当符合某个条件的时候，将日志转到其他的文件 -->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+	
+</configuration>

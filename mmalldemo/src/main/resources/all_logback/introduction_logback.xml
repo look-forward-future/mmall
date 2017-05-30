@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+
+<!-- 注意：下面的编码标签下面的pattern（样式的格式代表的是：什么？？）
+ 1.%d:表示的是：日志的格式：
+       Conversion Pattern				Result
+ %d         						2006-10-20 14:06:49,812
+ %date								2006-10-20 14:06:49,812
+ %date{ISO8601}						2006-10-20 14:06:49,812
+ %date{HH:mm:ss.SSS}				14:06:49.812
+ %date{dd MMM yyyy;HH:mm:ss.SSS}	20 oct. 2006;14:06:49.812
+ 
+ 2.c,lo,logger{length}:表示的是：输出日志事件的开端的日志名称 
+conversion specifier		Logger Name                        Result
+ 	%logger				mainPackage.sub.sample.Bar			mainPackage.sub.sample.Bar
+ 	%logger{0}     		mainPackage.sub.sample.Bar			Bar
+ 	%logger{5}     		mainPackage.sub.sample.Bar          m.s.s.Bar
+ 	%logger{10}    		mainPackage.sub.sample.Bar          m.s.s.Bar
+ 	%logger{15}    		mainPackage.sub.sample.Bar          m.s.sample.Bar
+ 	%logger{16}    		mainPackage.sub.sample.Bar          m.sub.sample.Bar
+	%logger{26}    		mainPackage.sub.sample.Bar          mainPackage.sub.sample.Bar
+ 
+3.%20logger:
+Format modifier			Logger name						Result
+[%20.20logger]           main.Name         		[           main.Name]
+[%-20.20logger]          main.Name         		[main.Name           ]
+[%10.10logger]        main.foo.foo.bar.Name     	[o.bar.Name]
+[%10.-10logger]       main.foo.foo.bar.Name         [main.foo.f]
+ 
+ 
+	keyword          equivalent conversion pattern
+common or CLF         %h %l %u [%t] "%r" %s %b
+  combined            %h %l %u [%t] "%r" %s %b "%i{Referer}" "%i{User-Agent}"
+  
+  The common keyword corresponds to the pattern 
+  '%h   %l   %u   [%t]   "%r"   %s   %b'    which displays 								
+client host,remote log name, user, date, requested URL, status code and response's content length
+ 
+ 4.[%p]:表示输出日志事件的level(级别)
+   [%t]:表示日志中显示日期
+   [%c{40}]:表示日志请求的完整合格的类名
+  m / msg / message  [%m]:表示与日志事件相关联的message(信息)
+  %n:表示输出行的分隔符(separator)
+  [%thread]:表示输出生成日志事件的线路的名称
+  %-5level:表示如何级别字符数小于5个的话，由于是负数，就会将结果写在输出的左边，空出右边区域，是整数则相反。
+  
+ -->
+<appender>
+	<encoder>
+		<pattern>[%d{HH:mm:ss.SSS}][%p][%c{40}][%t] %m%n</pattern>
+	</encoder>
+</appender>
+
+</configuration>
+

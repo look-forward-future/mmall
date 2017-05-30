@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+			<!-- 这是设置loger:用来设置某一个包或者具体某一个类的日志打印的级别 、以及指定<appender>.-->
+			<!-- logger的配置情况一：
+							带有logger的配置，不指定级别，不指定appender(输出源)的情况
+					<logger name="logback">将控制logback包下的所有类的日志的打印，没有设置打印级别，所以：继承他的上级的日志级别：“DEBUG”
+					没有设置additivity，默认为：true,将此logger的打印信息向上级传递，没有设置appender，此logger本身不打印任何信息。
+					当执行logerback.LogbackDeml类的main方法时，因为LogbackDemo在logback中，所以首先执行<logger name="logback">,将级别为：“DEBUG”以及大于“DEBUG”级别的日志信息传递给root，本身不打印，root接到下级传递的信息，将其交给名为：“STDOUT”的appender处理，“STDOUT”appender将信息打印到控制台 -->
+					
+	<configuration scan="true" scanPeriod="60 seconds" debug="false">
+		<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+			<!-- encoder 默认配置为：PatternLayoutEncoder -->
+			<encoder>
+				<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+			</encoder>
+		</appender>
+		
+		<!-- logback为java中包，下面即没有指定：级别，有没有指定：appender(输出源)，它会继承他的上级的级别  -->
+		<logger name="logback"/>
+		
+		<root name="DEBUG">
+			<appender-ref ref="STDOUT" />
+		</root>
+	</configuration>

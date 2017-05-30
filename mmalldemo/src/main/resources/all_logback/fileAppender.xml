@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+		<!-- FileAppender:将日志添加到文件 -->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+			<!-- 在标签appender中的属性：name:指的是：将日志添加的位置， 
+			"STDOUT"：表示：将日志打印到控制台
+			"FILE":表示：将日志打印到指定的文件-->
+	<appender name="FILE" class="ch.qos.logback.FileAppender">
+		<file>testFile.log</file>
+		<!-- 下面的标签中的值如果为：true,日志被追加到文件结尾。如果为：false,就清空现存文件 -->
+		<append>true</append>
+		<!-- 对记录事件进行格式化 -->
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<root level="DEBUG">
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scam="true" scanPeriod="60 seconds" debug="false">
+	<!-- 这个log的xml文件我们是以时间戳作为上下文的名称 -->
+	
+	<timestamp key="bySecond" value="yyyyMMdd'T'HHmmss" />
+	<contextName>${bySecond}</contextName>
+</configuration>

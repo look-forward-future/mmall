@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	<!-- encoder 默认配置为：PatternLayoutEncoder -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- 将root的打印级别设置为："INFO"，指定了名字为："STDOUT"的appender(输出源；输出目的地) 
+			当执行logback.LogbackDeml类的main方法时，root将级别为：INFO以及大于“INFO”的日志交给已经配置好的名为：“STDOUT”的appender处理，“STDOUT”appender将信息打印到控制台-->
+	<root level="INFO"> 
+		<appender-ref ref="STDOUT" />
+	</root>
+	
+</configuration>
+
+  
+  <!-- 下面是LogbackDemo.java类 -->
+  
+<!--import org.slf4j.Logger;  
+import org.slf4j.LoggerFactory;  
+  
+public class LogbackDemo {  
+    private static Logger log = LoggerFactory.getLogger(LogbackDemo.class);  
+    public static void main(String[] args) {  
+        log.trace("======trace");  
+        log.debug("======debug");  
+        log.info("======info");  
+        log.warn("======warn");  
+        log.error("======error");  
+    }  
+}   -->
